@@ -10,7 +10,7 @@
 
 namespace Eko\InstagramBundle\Application;
 
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Component\Routing\RouterInterface;
 
 /**
  * ApplicationManager
@@ -32,15 +32,15 @@ class ApplicationManager
     protected $applications;
 
     /**
-     * @var \Symfony\Bundle\FrameworkBundle\Routing\Router Router service
+     * @var RouterInterface
      */
     protected $router;
 
     /**
-     * @param \Symfony\Bundle\FrameworkBundle\Routing\Router $router Router service
-     * @param array                                          $config Configuration array
+     * @param RouterInterface $router Router service
+     * @param array           $config Configuration array
      */
-    public function __construct(Router $router, array $config)
+    public function __construct(RouterInterface $router, array $config)
     {
         $this->config = $config;
         $this->router = $router;
@@ -53,7 +53,8 @@ class ApplicationManager
      *
      * @return bool
      */
-    public function has($application) {
+    public function has($application)
+    {
         return isset($this->config['applications'][$application]);
     }
 

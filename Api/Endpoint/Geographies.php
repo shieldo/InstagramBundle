@@ -38,8 +38,6 @@ class Geographies extends Endpoint
     {
         $url = '/v1/geographies/'. $identifier .'/media/recent';
 
-        $options['client_id'] = $this->application->getParameter('client_id');
-
         return $this->executeRequest('get', $url, $options);
     }
 }

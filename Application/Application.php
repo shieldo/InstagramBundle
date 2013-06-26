@@ -10,7 +10,7 @@
 
 namespace Eko\InstagramBundle\Application;
 
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Component\Routing\RouterInterface;
 
 use Eko\InstagramBundle\Api\Authentication;
 use Eko\InstagramBundle\Application\Account;
@@ -30,7 +30,7 @@ class Application extends Authentication
     protected $config = array();
 
     /**
-     * @var \Symfony\Bundle\FrameworkBundle\Routing\Router $router Router service
+     * @var RouterInterface
      */
     protected $router;
 
@@ -49,7 +49,7 @@ class Application extends Authentication
      *
      * @param array $config Configuration array
      */
-    public function __construct(Router $router, $config)
+    public function __construct(RouterInterface $router, $config)
     {
         $this->router = $router;
         $this->config = $config;

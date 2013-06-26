@@ -68,10 +68,14 @@ class Endpoint extends Client
             throw new \RuntimeException('You must set Application before using an endpoint API method.');
         }
 
-        $token = $this->application->getAccessToken();
+        if ($this->application->hasAccessToken()) {
+            $token = $this->application->getAccessToken();
+            $options['access_token'] = $token;
+        }
 
-        $url = sprintf($url . '?access_token=%s', $token);
-        $url .= '&' . http_build_query($options);
+        $options['client_id'] = $this->application->getParameter('client_id');
+
+        $url .= '?' . http_build_query($options);
 
         $response = $this->client->get($url)->send();
 

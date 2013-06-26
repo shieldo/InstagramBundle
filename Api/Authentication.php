@@ -10,8 +10,6 @@
 
 namespace Eko\InstagramBundle\Api;
 
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
-
 use Eko\InstagramBundle\Api\Client;
 use Eko\InstagramBundle\Application\Application;
 
@@ -66,6 +64,14 @@ class Authentication extends Client
     public function getAccessToken()
     {
         return $this->token;
+    }
+
+    /**
+     * Does this application have an access token
+     */
+    public function hasAccessToken()
+    {
+        return (bool) !is_null($this->token);
     }
 
     /**
